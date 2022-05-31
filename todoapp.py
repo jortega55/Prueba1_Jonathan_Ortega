@@ -21,6 +21,10 @@ lista_registro = []
 def principal():
     return render_template('principal.html', lista_registo=lista_registro)
 
+@app.route('/tienda')
+def tienda():
+    return render_template('tienda.html', lista_registo=lista_registro)
+
 
 #Controlador para enviar los datos
 @app.route('/enviar', methods=['POST'])
@@ -29,7 +33,7 @@ def enviar():
 
         tarea_nombre = request.form['tarea_descripcion']
         tarea_numero = request.form['tarea_correo']
-        tarea_prioridad = request.form['tarea_prioridad']
+        tarea_estado = request.form['tarea_prioridad']
 
 
         if tarea_nombre == '' or tarea_numero == '':
@@ -39,7 +43,7 @@ def enviar():
 
             flash('Se agrego una nueva tarea a la lista')
 
-            lista_registro.append({'tarea_descripcion': tarea_nombre, 'tarea_correo': tarea_numero, 'tarea_prioridad': tarea_prioridad })
+            lista_registro.append({'tarea_descripcion': tarea_nombre, 'tarea_correo': tarea_numero, 'tarea_prioridad': tarea_estado })
 
             return redirect(url_for('principal'))
 
