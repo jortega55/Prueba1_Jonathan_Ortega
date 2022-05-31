@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <title>Lista de tareas</title>
+</head>
+
+<body style="background-color:rgb(106, 172, 172) ;">
+
+    {% for message in get_flashed_messages() %}
+    <h2 class="text-center text-warning">{{ message }}</h2>
+    {% endfor %}
+
+    <h1>Prueba tareas</h1>
+
+    <!--Controlador 1.2 Formulario para el ingreso de las tareas-->
+    <form method="post" action="{{url_for('enviar')}}">
+        <div class="form-group">
+            <label>Descriptcion de la tarea</label>
+            <input type="text" class="form-control" placeholder="Ingrese la descripcion de la tarea"
+                name="tarea_descripcion">
+        </div>
+        <div class="form-group">
+            <label>Correo electronico</label>
+            <input type="email" class="form-control" placeholder="Ingrese el correo electronico" name="tarea_correo">
+        </div>
+        <div class="form-group">
+            <label>Nivel de prioridad</label>
+            <select class="form-control" name="tarea_prioridad">
+                <option value="1">Bajo</option>
+                <option value="2">Medio</option>
+                <option value="3">Alto</option>
+            </select>
+        </div>
+        <input type="submit">
+    </form>
+
+    <!--Controlador 1.1 Tabla para mostrar las tareas-->
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Descripcion tarea</th>
+                <th scope="col">Corro electronico</th>
+                <th scope="col">prioridad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--Ciclo for para acceder a la lista de tareas-->
+            {% for tarea in lista_tareas %}
+
+            <tr>
+
+                <!--Mostrar la descripcion de la tarea-->
+                <th>{{tarea.tarea_descripcion}}</th>
+                <!--Mostrar correo de la tarea-->
+                <th>{{tarea.tarea_correo}}</th>
+                <!--Mostrar prioridad de la tarea-->
+                <th>{{tarea.tarea_prioridad}}</th>
+
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <form action="{{url_for('borrar')}}" method="post" class="card-body">
+
+        <button type="submit" class="btn btn-danger mb-2">Borrar tareas</button>
+
+    </form>
+
+
+</body>
+
+</html>
