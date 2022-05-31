@@ -21,25 +21,25 @@
     <h2 class="text-center text-warning">{{ message }}</h2>
     {% endfor %}
 
-    <h1>Prueba tareas</h1>
+    <h1>CLIENTE</h1>
 
     <!--Controlador 1.2 Formulario para el ingreso de las tareas-->
     <form method="post" action="{{url_for('enviar')}}">
         <div class="form-group">
-            <label>Descriptcion de la tarea</label>
-            <input type="text" class="form-control" placeholder="Ingrese la descripcion de la tarea"
-                name="tarea_descripcion">
+            <label>NOMBRE DEL CLIENTE</label>
+            <input type="text" class="form-control" placeholder="Ingrese el nombre del cliente"
+                name="tarea_nombre">
         </div>
         <div class="form-group">
-            <label>Correo electronico</label>
-            <input type="email" class="form-control" placeholder="Ingrese el correo electronico" name="tarea_correo">
+            <label>Telefono del cliente</label>
+            <input type="text" class="form-control" placeholder="Ingrese su numero de telefono" name="tarea_telefono">
         </div>
         <div class="form-group">
             <label>Nivel de prioridad</label>
-            <select class="form-control" name="tarea_prioridad">
-                <option value="1">Bajo</option>
-                <option value="2">Medio</option>
-                <option value="3">Alto</option>
+            <select class="form-control" name="tarea_estado">
+                <option value="1">Normal</option>
+                <option value="2">Caso</option>
+                <option value="3">Cercano</option>
             </select>
         </div>
         <input type="submit">
@@ -49,9 +49,9 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Descripcion tarea</th>
-                <th scope="col">Corro electronico</th>
-                <th scope="col">prioridad</th>
+                <th scope="col">Nombre cliente</th>
+                <th scope="col">Telefono Cliente</th>
+                <th scope="col">Estado COVID</th>
             </tr>
         </thead>
         <tbody>
@@ -61,11 +61,11 @@
             <tr>
 
                 <!--Mostrar la descripcion de la tarea-->
-                <th>{{tarea.tarea_descripcion}}</th>
+                <th>{{tarea.tarea_nombre}}</th>
                 <!--Mostrar correo de la tarea-->
-                <th>{{tarea.tarea_correo}}</th>
+                <th>{{tarea.tarea_telefono}}</th>
                 <!--Mostrar prioridad de la tarea-->
-                <th>{{tarea.tarea_prioridad}}</th>
+                <th>{{tarea.tarea_estado}}</th>
 
 
             </tr>

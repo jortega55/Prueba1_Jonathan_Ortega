@@ -12,14 +12,14 @@ app.secret_key = '123456789'
 
 
 #Arreglo para almacenar las tareas
-lista_tareas = []
+lista_registro = []
 
 #Controlador de la ruta por defecto
 # Ingreso de datos por formulario
 # Mostras las tareas pendientes
 @app.route('/')
 def principal():
-    return render_template('principal.html', lista_tareas=lista_tareas)
+    return render_template('principal.html', lista_registo=lista_registro)
 
 
 #Controlador para enviar los datos
@@ -27,19 +27,19 @@ def principal():
 def enviar():
     if request.method == 'POST':
 
-        tarea_descripcion = request.form['tarea_descripcion']
-        tarea_correo = request.form['tarea_correo']
+        tarea_nombre = request.form['tarea_descripcion']
+        tarea_numero = request.form['tarea_correo']
         tarea_prioridad = request.form['tarea_prioridad']
 
 
-        if tarea_descripcion == '' or tarea_correo == '':
+        if tarea_nombre == '' or tarea_numero == '':
             flash('Por favor ingresar todos los campos de texto  y verificar que no esten vacios')
             return redirect(url_for('principal'))
         else:
 
             flash('Se agrego una nueva tarea a la lista')
 
-            lista_tareas.append({'tarea_descripcion': tarea_descripcion, 'tarea_correo': tarea_correo, 'tarea_prioridad': tarea_prioridad })
+            lista_registro.append({'tarea_descripcion': tarea_nombre, 'tarea_correo': tarea_numero, 'tarea_prioridad': tarea_prioridad })
 
             return redirect(url_for('principal'))
 
@@ -48,13 +48,13 @@ def enviar():
 def borrar():
     if request.method == 'POST':
         
-        if lista_tareas == []:
+        if lista_registro == []:
 
             flash('No existen tareas en la lista')
             return redirect(url_for('principal'))
 
         else:
-            lista_tareas.clear()
+            lista_registro.clear()
             flash('La lista de tareas fue borrada')
             return redirect(url_for('principal'))
 
