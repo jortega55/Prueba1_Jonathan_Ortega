@@ -25,6 +25,10 @@ def principal():
 def tienda():
     return render_template('tienda.html', lista_registo=lista_registro)
 
+@app.route('/admin')
+def admin():
+    return render_template('admin.html')
+
 
 #Controlador para enviar los datos
 @app.route('/enviar', methods=['POST'])

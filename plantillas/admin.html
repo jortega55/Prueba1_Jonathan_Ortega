@@ -26,13 +26,8 @@
     <!--Controlador 1.2 Formulario para el ingreso de las tareas-->
     <form method="post" action="{{url_for('enviar')}}">
         <div class="form-group">
-            <label>NOMBRE DE LA TIENDA</label>
-            <input type="text" class="form-control" placeholder="Ingrese el nombre del cliente"
-                name="tarea_nombreT">
-        </div>
-        <div class="form-group">
-            <label>Telefono de la tienda</label>
-            <input type="text" class="form-control" placeholder="Ingrese su numero de telefono" name="tarea_telefonoT">
+            <label>Detalle Cliente</label>
+            <input type="text" class="form-control" placeholder="Ingrese el nombre del cliente" name="tarea_detalleA">
         </div>
         <div class="form-group">
             <label>Estado</label>
@@ -41,34 +36,28 @@
                 <option value="2">Caso</option>
             </select>
         </div>
-        <div class="form-group">
-            <label>Gerente de la tienda</label>
-            <input type="text" class="form-control" placeholder="Ingrese su numero de telefono" name="tarea_gerente">
-        </div>
+        
         <input type="submit">
     </form>
 
-    <!--Controlador 1.1 Tabla para mostrar las tareas-->
+    <!--Controlador 1.1 Tabla para mostrar los registros-->
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Nombre tienda</th>
-                <th scope="col">Telefono tienda</th>
-                <th scope="col">Estado</th>
+                <th scope="col">Tienda</th>
+                <th scope="col">Historial de Visitas</th>
             </tr>
         </thead>
         <tbody>
-            <!--Ciclo for para acceder a la lista de tareas-->
+            <!--Ciclo for para acceder a los registros-->
             {% for tarea in lista_registro %}
 
             <tr>
 
                 <!--Mostrar la descripcion de la tarea-->
-                <th>{{tarea.tarea_nombre}}</th>
+                <th>{{tarea.tarea_detalleA}}</th>
                 <!--Mostrar correo de la tarea-->
-                <th>{{tarea.tarea_telefono}}</th>
-                <!--Mostrar prioridad de la tarea-->
-                <th>{{tarea.tarea_estado}}</th>
+                <th>{{tarea.tarea_estadoT}}</th>
 
 
             </tr>
