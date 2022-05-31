@@ -27,7 +27,9 @@ def tienda():
 
 @app.route('/admin')
 def admin():
-    return render_template('admin.html')
+    return render_template('admin.html', lista_registo=lista_registro)
+
+
 
 
 #Controlador para enviar los datos
@@ -50,6 +52,22 @@ def enviar():
             lista_registro.append({'tarea_descripcion': tarea_nombre, 'tarea_correo': tarea_numero, 'tarea_prioridad': tarea_estado })
 
             return redirect(url_for('principal'))
+
+#Controlador de la ruta para borrar
+@app.route('/borrar', methods=['POST'])
+def borrar():
+    if request.method == 'POST':
+        
+        if lista_registro == []:
+
+            flash('No existen tareas en la lista')
+            return redirect(url_for('principal'))
+
+        else:
+            lista_registro.clear()
+            flash('La lista de tareas fue borrada')
+            return redirect(url_for('principal'))
+
 
 #Metodo para correr la aplicacion
 if __name__ == '__main__':
