@@ -51,22 +51,6 @@ def enviar():
 
             return redirect(url_for('principal'))
 
-#Controlador de la ruta para borrar
-@app.route('/borrar', methods=['POST'])
-def borrar():
-    if request.method == 'POST':
-        
-        if lista_registro == []:
-
-            flash('No existen tareas en la lista')
-            return redirect(url_for('principal'))
-
-        else:
-            lista_registro.clear()
-            flash('La lista de tareas fue borrada')
-            return redirect(url_for('principal'))
-
-
 #Metodo para correr la aplicacion
 if __name__ == '__main__':
     app.run(debug=True)

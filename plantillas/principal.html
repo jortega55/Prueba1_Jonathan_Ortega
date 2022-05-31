@@ -54,12 +54,12 @@
             </tr>
         </thead>
         <tbody>
-            <!--Ciclo for para acceder a la lista de tareas-->
+            <!--Ciclo for para acceder a la lista de registros-->
             {% for tarea in lista_registro %}
 
             <tr>
 
-                <!--Mostrar la descripcion de la tarea-->
+                <!--Mostrar la descripcion del registro-->
                 <th>{{tarea.tarea_nombre}}</th>
                 <!--Mostrar correo de la tarea-->
                 <th>{{tarea.tarea_telefono}}</th>
@@ -71,12 +71,6 @@
             {% endfor %}
         </tbody>
     </table>
-
-    <form action="{{url_for('borrar')}}" method="post" class="card-body">
-
-        <button type="submit" class="btn btn-danger mb-2">Borrar tareas</button>
-
-    </form>
 <div>
     <button type="button" class="btn btn-primary" href="principal.html/">CLIENTE</button>
     <button type="button" class="btn btn-secondary" href="tienda.html/">TIENDA</button>
